@@ -1,3 +1,4 @@
+import calendar
 # This homework assignment is a series of programs that perform different tasks
 # 1: This program gets a string containing a persons's first, middle and last names, and displays their first middle, and last initials
 # 2: This program asks the user to enter a series of single digit numbers with nothing separating them.
@@ -46,6 +47,55 @@ def get_initials():
     # Run the program again
     menu_navigation()
 
-#2nd Program:
+# 2nd Program:
 def sum_of_digits():
+    while True:
+        # Try and expect to make sure user only enters integers
+        try:
+            # Get user to input numbers
+            user_digit_input = input("Enter the numbers you want to see the sum of: ")
+            # Create a list that loops through the string and turns all of the characters into integers
+            user_digits_array = [int(digit) for digit in user_digit_input]
+            # Add them up and print it out
+            user_digits_sum = sum(user_digits_array)
+            print(f'The sum of the digits is: {user_digits_sum}')
+            menu_navigation()
+        except ValueError:
+            print("Please only enter integers")
+
+# 3rd Program
+def convert_date():
+    # Prompt user to enter the date
+    user_input_date = input("Enter a date in the form mm/dd/yyyy: ")
+    # Split into an array of strings
+    date_components = user_input_date.split("/")
+    # Check if import has three components
+    if len(date_components) != 3:
+            print("Please enter the date in the correct format")
+            convert_date()
+    # Assign variables for the different parts of the array
+    month, day, year = date_components
+    # Check to make sure the variables contain only ints
+    if not (month.isdigit() and day.isdigit() and year.isdigit()):
+        print("Please use only integers")
+        convert_date
+    # Convert the variables to ints
+    month = int(month)
+    day = int(day)
+    year = int(year)
+    # Validate the length of the month, day, and year
+    if not(1 <= month <= 12):
+        print("The date must be between 1 and 12")
+        convert_date
+    if not(1 <= day <= 31):
+        print("The date must be between 1 and 31")
+        convert_date
+    if year < 0:
+        print("The year must be a positive number")
+        convert_date
+    # Convert the month number to the name of the month
+    month_name = calendar.month_name[month]
+    # Print out the final result
+    print(f"The date you entered was {month_name}, {day}, {year}")
+    menu_navigation()
 menu_navigation()
