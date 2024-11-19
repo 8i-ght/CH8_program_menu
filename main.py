@@ -78,7 +78,7 @@ def convert_date():
     # Check to make sure the variables contain only ints
     if not (month.isdigit() and day.isdigit() and year.isdigit()):
         print("Please use only integers")
-        convert_date
+        convert_date()
     # Convert the variables to ints
     month = int(month)
     day = int(day)
@@ -86,16 +86,38 @@ def convert_date():
     # Validate the length of the month, day, and year
     if not(1 <= month <= 12):
         print("The date must be between 1 and 12")
-        convert_date
+        convert_date()
     if not(1 <= day <= 31):
         print("The date must be between 1 and 31")
-        convert_date
+        convert_date()
     if year < 0:
         print("The year must be a positive number")
-        convert_date
+        convert_date()
     # Convert the month number to the name of the month
     month_name = calendar.month_name[month]
     # Print out the final result
     print(f"The date you entered was {month_name}, {day}, {year}")
+    menu_navigation()
+
+# 4th Program
+def convert_to_pig_latin():
+    # Prompt the user to input their sentence
+    piglatin_user_input = input("Enter the string you wish to be converted to pig latin: ")
+    # Check that the user entered something
+    if not piglatin_user_input.split():
+        print("Please enter something")
+        convert_to_pig_latin()
+    # Convert the string to an array 
+    piglatin_array = piglatin_user_input.split()
+    # Create array to store the result in
+    piglatin_result = []
+    # Loop through each word in the array and convert them to piglatin
+    for word in piglatin_array:
+            piglatin_transfer = word[1:] + word[0] + "ay"
+            piglatin_result.append(piglatin_transfer)
+    # Convert the array of strings to a single string
+    piglatin_sentence = " ".join(piglatin_result)
+    # Show the user their result
+    print(f"Your sentence in pig latin is: {piglatin_sentence}")
     menu_navigation()
 menu_navigation()
